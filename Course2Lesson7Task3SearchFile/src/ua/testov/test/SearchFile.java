@@ -31,16 +31,20 @@ public String[] call() throws Exception {
 }
 public ArrayList<String> arrNames(File folder, String str) {
 	File[] arrFiles = folder.listFiles();
-	ArrayList<String> arrName = new ArrayList<String>();
+	ArrayList<String> arrNames = new ArrayList<String>();
 	for (File file : arrFiles) {
 		if (file.isDirectory()) {
 			arrNames(file, str);
 		} else {
 			if (file.getName().equals(str))
-				arrName.add(file.getPath());
+				arrNames.add(file.getPath());
 		}
 	}
-	return arrName;
+	Object[] arr = arrNames.toArray();
+	for (Object string : arr) {
+		System.out.println(string);
+	}
+	return arrNames;
 }
 
 }
