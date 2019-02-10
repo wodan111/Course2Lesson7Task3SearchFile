@@ -17,7 +17,6 @@ public class Main {
 		try {
 			res=future.get();
 			for (String string : res) {
-				System.out.println();
 				System.out.println(string);
 			}
 		} catch (InterruptedException|ExecutionException e) {

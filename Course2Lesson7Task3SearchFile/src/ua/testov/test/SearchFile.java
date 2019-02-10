@@ -24,26 +24,27 @@ public String[] call() throws Exception {
 	if(folder.isFile()) {
 		throw new InvalidParameterException(folder+"It is not directory!");
 	}
-	ArrayList<String> arrList=arrNames(folder, str);
+	ArrayList<String> arrNames = new ArrayList<String>();
+	ArrayList<String> arrList=arrNames(folder, str,arrNames);
 	String[]arr=new String[arrList.size()];
 	arrList.toArray(arr);
 	return arr;
 }
-public ArrayList<String> arrNames(File folder, String str) {
+public ArrayList<String> arrNames(File folder, String str,ArrayList<String>arrNames) {
 	File[] arrFiles = folder.listFiles();
-	ArrayList<String> arrNames = new ArrayList<String>();
+	
 	for (File file : arrFiles) {
 		if (file.isDirectory()) {
-			arrNames(file, str);
+			arrNames(file, str,arrNames);
 		} else {
 			if (file.getName().equals(str))
 				arrNames.add(file.getPath());
 		}
 	}
-	Object[] arr = arrNames.toArray();
-	for (Object string : arr) {
-		System.out.println(string);
-	}
+//	Object[] arr = arrNames.toArray();
+//	for (Object string : arr) {
+//		System.out.println(string);
+//	}
 	return arrNames;
 }
 
